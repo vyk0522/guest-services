@@ -1,0 +1,26 @@
+# On local windows machine it runs on 3305 port
+# It pulls latest image
+
+# This docker-compose.yml file is located in D:\1JavaOneWork\Handouts\spring-security\guest-services
+# Volume location where state of container is stored is D:\1JavaOneWork\docker\Volumes\guest-service\.data\db
+# Delete volume directory to remove the volume or container state.
+
+# D:\1JavaOneWork\Handouts\spring-security\guest-services>>  docker-compose up -d  --> To start
+                                                             # docker-compose down   --> To shut
+
+version: '3.8'
+
+networks:
+  default:
+
+services:
+   db:
+     image: mysql
+     container_name: guest_container
+     ports:
+       - 3305:3306
+     volumes:
+       - "./../../../docker/Volumes/guest-service/.data/db:/var/lib/mysql"
+     environment:
+       MYSQL_ROOT_PASSWORD: admin
+       MYSQL_DATABASE: guestdb
