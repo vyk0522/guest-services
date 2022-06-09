@@ -1,6 +1,7 @@
 package com.onejava.model;
 
 import com.onejava.entity.Guest;
+import com.onejava.util.GuestUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,8 +27,9 @@ public class GuestDTO {
     @NotNull(message = "PhoneNumber is missing")
     private String phoneNumber;
 
-    public Guest translateModelToGuest(){
-        Guest guest = new Guest();
+    public Guest translateModelToGuest() {
+        return GuestUtil.convertValue(this, Guest.class);
+        /*Guest guest = new Guest();
         guest.setFirstName(this.firstName);
         guest.setLastName(this.lastName);
         guest.setEmailAddress(this.emailAddress);
@@ -35,6 +37,6 @@ public class GuestDTO {
         guest.setCountry(this.country);
         guest.setState(this.state);
         guest.setPhoneNumber(this.phoneNumber);
-        return guest;
+        return guest;*/
     }
 }
